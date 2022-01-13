@@ -116,14 +116,14 @@ jobs:
         oc create -f https://raw.githubusercontent.com/sousamleonardo/blog/master/deploy/db-service.yaml -n ${{ env.OPENSHIFT_NAMESPACE }}
       continue-on-error: true
       
-  #   - name: Criando repositório de Imagem para a aplicação
-  #     run: |
-  #       oc create -f https://raw.githubusercontent.com/sousamleonardo/blog/master/deploy/app-imageStream.yaml -n ${{ env.OPENSHIFT_NAMESPACE }}
+    - name: Criando repositório de Imagem para a aplicação
+      run: |
+        oc create -f https://raw.githubusercontent.com/sousamleonardo/blog/master/deploy/app-imageStream.yaml -n ${{ env.OPENSHIFT_NAMESPACE }}
         
-  #  - name: Build da aplicação
-  #    run: |
-  #      oc create -f https://raw.githubusercontent.com/sousamleonardo/blog/master/deploy/app-buildConfig.yaml -n ${{ env.OPENSHIFT_NAMESPACE }}
-  #      sleep 60
+   - name: Build da aplicação
+     run: |
+       oc create -f https://raw.githubusercontent.com/sousamleonardo/blog/master/deploy/app-buildConfig.yaml -n ${{ env.OPENSHIFT_NAMESPACE }}
+       sleep 60
         
     - name: Deploy da aplicação no POD e associação com o Banco de dados
       run: |
