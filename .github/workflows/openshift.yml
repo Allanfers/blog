@@ -95,6 +95,11 @@ jobs:
         oc delete HorizontalPodAutoscaler ${{ env.APP_NAME }}-hpa
         oc delete route ${{ env.APP_NAME }}-route
       continue-on-error: true
+
+    - name: Criando o Projeto
+      run: |
+        oc create-project ${{ env.OPENSHIFT_NAMESPACE }}
+      continue-on-error: true
       
     - name: Criando Volume Persistente para o Banco de Dados
       run: |
