@@ -98,7 +98,7 @@ jobs:
 
     - name: Criando o Projeto
       run: |
-        oc create-project ${{ env.OPENSHIFT_NAMESPACE }}
+        oc new-project ${{ env.OPENSHIFT_NAMESPACE }}
       continue-on-error: true
       
     - name: Criando Volume Persistente para o Banco de Dados
